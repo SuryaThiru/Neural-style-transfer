@@ -1,4 +1,4 @@
-# Nueral style transfer
+# Neural style transfer
 Implementation of "A neural algorithm of artistic style" in keras
 
 ## Usage
