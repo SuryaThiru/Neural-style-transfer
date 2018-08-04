@@ -13,8 +13,14 @@ output = 'output/'
 style_transfer(cnt_image, style_image, output)
 ```
 
+## Requirements
+* Keras
+* Scipy
+* Numpy
+* Pillow
+
 ## References:
-* [arXiv:1508.06576v2](https://arxiv.org/abs/1508.06576)
-* [arXiv:1705.04058v6](https://arxiv.org/abs/1705.04058v6)
+* [Gatys, L.A., Ecker, A.S., & Bethge, M. (2015). A Neural Algorithm of Artistic Style. CoRR, abs/1508.06576.](https://arxiv.org/abs/1508.06576)
+* [Jing, Y., Yang, Y., Feng, Z., Ye, J., & Song, M. (2017). Neural Style Transfer: A Review. CoRR, abs/1705.04058.](https://arxiv.org/abs/1705.04058v6)
 * https://medium.com/mlreview/making-ai-art-with-style-transfer-using-keras-8bb5fa44b216
 * https://www.bonaccorso.eu/2016/11/13/neural-artistic-style-transfer-experiments-with-keras
