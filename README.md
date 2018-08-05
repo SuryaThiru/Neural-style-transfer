@@ -13,6 +13,8 @@ output = 'output/'
 style_transfer(cnt_image, style_image, output)
 ```
 
+Few images are given in the `/img` folder. U can use your own images too.
+
 ## Requirements
 * Keras
 * Scipy
