@@ -53,7 +53,7 @@ def generate_canvas(mode='random', ref_image=None):
     size = (512, 512, 3)
 
     if mode == 'random':
-        img = np.random.randint(256, size=size)
+        img = np.random.randint(256, size=size).astype('float64')
     elif mode == 'from_ref':
         if type(ref_image) == str:
             img = load_img(path=ref_image, target_size=size)
@@ -166,7 +166,8 @@ def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=5
     As = get_feature_maps(style_model, style_layers, tf_session)
 
     # generate canvas from content
-    X = generate_canvas('from_ref', cnt_img_path).flatten()
+    # X = generate_canvas('from_ref', cnt_img_path).flatten()
+    X = generate_canvas().flatten()
 
     def calculate_loss(gimg):
         gimg = gimg.reshape((1,) + target_size)
@@ -202,6 +203,6 @@ def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=5
         calculate_loss, X, fprime=calculate_grad,
         maxiter=epochs, callback=callback)
 
-    print('Saving final generated image...')
+    print('\nSaving final generated image...')
     path = output_path + 'optimal.jpg'
     imsave(X_optim, path)

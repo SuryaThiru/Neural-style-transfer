@@ -1,7 +1,7 @@
 from neural_transer import style_transfer
 
-cnt_image = 'img/river.jpg'
+cnt_image = 'img/neckarfront.jpg'
 style_image = 'img/starry_night.jpg'
-output = 'output/'
+output = 'test/'
 
-style_transfer(cnt_image, style_image, output)
+style_transfer(cnt_image, style_image, output, 120)
