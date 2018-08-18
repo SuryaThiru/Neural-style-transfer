@@ -115,7 +115,7 @@ def total_style_loss(weights, Gs, As):
     return loss
 
 
-def total_loss(P, As, canvas_model, clayers, slayers, style_weights, tf_session, alpha=1.0, beta=10000.0):
+def total_loss(P, As, canvas_model, clayers, slayers, style_weights, tf_session, alpha=1.0, beta=1000.0):
     '''
     Get total loss
     Params:
