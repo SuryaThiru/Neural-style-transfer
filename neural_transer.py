@@ -4,6 +4,7 @@ from keras.preprocessing.image import load_img, img_to_array
 from scipy.optimize import fmin_l_bfgs_b
 from PIL import Image
 import numpy as np
+import time
 
 
 # Utilities
@@ -136,7 +137,7 @@ def total_loss(P, As, canvas_model, clayers, slayers, style_weights, tf_session,
 step = 1
 
 
-def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=50, save_per_epoch=20):
+def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=50, save_per_epoch=20, random_canvas=False):
     target_size = (512, 512, 3)
 
     cnt_img = imread_tensor(cnt_img_path)
@@ -166,8 +167,11 @@ def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=5
     As = get_feature_maps(style_model, style_layers, tf_session)
 
     # generate canvas from content
-    # X = generate_canvas('from_ref', cnt_img_path).flatten()
-    X = generate_canvas().flatten()
+    if random_canvas:
+        X = generate_canvas().flatten()
+    else:
+        # X = generate_canvas('from_ref', cnt_img_path).flatten()
+        X = generate_canvas('from_ref', 'test/prevfinal.jpg')
 
     def calculate_loss(gimg):
         gimg = gimg.reshape((1,) + target_size)
@@ -199,9 +203,13 @@ def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=5
 
     print('Optimizing...\n')
 
+    start = time.time()
+
     X_optim, _, info = fmin_l_bfgs_b(
         calculate_loss, X, fprime=calculate_grad,
         maxiter=epochs, callback=callback)
+
+    print('\nTraining time: ', time.time() - start)
 
     print('\nSaving final generated image...')
     path = output_path + 'optimal.jpg'
