@@ -17,6 +17,8 @@ style_transfer(cnt_image, style_image, output, epochs, save_per_epoch, random_ca
 
 Few images are given in the `/img` folder. U can use your own images too.
 
+Notebook and embedded html is also added in the repo.
+
 ## Samples
 
 ![Sample output](img/sample.jpg)
@@ -26,6 +28,8 @@ Few images are given in the `/img` folder. U can use your own images too.
 * Scipy
 * Numpy
 * Pillow
+
+Program uses keras pre-trained VGG16 network. 
 
 ## References:
 * [Gatys, L.A., Ecker, A.S., & Bethge, M. (2015). A Neural Algorithm of Artistic Style. CoRR, abs/1508.06576.](https://arxiv.org/abs/1508.06576)
