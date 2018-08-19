@@ -166,12 +166,11 @@ def style_transfer(cnt_img_path, style_img_path, output_path='output/', epochs=5
     P = get_feature_maps(cnt_model, cnt_layers, tf_session)[0]
     As = get_feature_maps(style_model, style_layers, tf_session)
 
-    # generate canvas from content
     if random_canvas:
         X = generate_canvas().flatten()
     else:
-        # X = generate_canvas('from_ref', cnt_img_path).flatten()
-        X = generate_canvas('from_ref', 'test/prevfinal.jpg')
+        # generate canvas from content
+        X = generate_canvas('from_ref', cnt_img_path).flatten()
 
     def calculate_loss(gimg):
         gimg = gimg.reshape((1,) + target_size)
