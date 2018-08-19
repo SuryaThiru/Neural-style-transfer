@@ -9,11 +9,17 @@ from neural_transer import style_transfer
 cnt_image = 'img/river.jpg'
 style_image = 'img/starry_night.jpg'
 output = 'output/'
+epochs = 600
+save_per_epoch = 40
 
-style_transfer(cnt_image, style_image, output)
+style_transfer(cnt_image, style_image, output, epochs, save_per_epoch, random_canvas=True)
 ```
 
 Few images are given in the `/img` folder. U can use your own images too.
+
+## Samples
+
+![Sample output](img/sample.jpg)
 
 ## Requirements
 * Keras
